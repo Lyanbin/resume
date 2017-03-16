@@ -90,7 +90,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var endOfSentence = /[\.\!\?]$/;
+var endOfSentence = /[\.\!\?]\s$/;
+var commentRegex = /(\/\*(?:[^](?!\/\*))*\*)$/;
 
 var Index = function () {
     function Index() {
@@ -115,10 +116,10 @@ var Index = function () {
 
             var chars = message.slice(index, index + charsPerInterval);
             index = index + charsPerInterval;
-            this.writeChar(el, chars);
+            this.writeCSSChar(el, chars, this.style);
             if (index < message.length) {
                 var thisInterval = interval;
-                var thisSliceChars = message.slice(index - 2, index + 1);
+                var thisSliceChars = message.slice(index - 2, index);
                 if (endOfSentence.test(thisSliceChars)) {
                     console.log(thisSliceChars);
                     thisInterval = interval * 50;
@@ -153,10 +154,23 @@ var Index = function () {
                 text += char;
             } else if (char === '/' && this.commentFlag === true && text.slice(-1) === '*') {
                 this.commentFlag = false; // 如果标记为真且碰到「/」则说明注释结束
-                text += char;
+                // text += char;
+                console.log('asdasdasdasd');
+                console.log(commentRegex.test(text));
+                text = text.replace(commentRegex, '<span class="comment">$1/</span>');
+                console.log(text);
             } else if (char !== '/' && this.commentFlag) {
                 text += char; // 注释部分的文字
+            } else if (char === ':') {
+                text = text.replace(keyRegex, '<span class="key">$1</span>:');
+            } else if (char === ';') {
+                text = text.replace(valueRegex, '<span class="value">$1</span>:');
+            } else if (char === '{') {
+                text = text.replace(selectorRegex, '<span class="selector">$1</span>{');
+            } else if (char === 'x' && pxRegex.test(text.slice(-2))) {} else {
+                text += char;
             }
+            return text;
         }
     }]);
 
@@ -171,7 +185,7 @@ new Index();
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "/*\n * hello !\n * 我是李彦傧.\n */\n\n* {\n    padding: 0;\n    margin: 0;\n}\nbody {\n    background-color: #0e0e0e;\n}\n"
+module.exports = "/*\n * hello !\n * 我是李彦傧.\n */\n\n* {\n    padding: 0;\n    margin: 0;\n}\n\nbody {\n    background-color: green;\n}\n\n.comment {\n    font-size: 18px;\n    color: red;\n    line-height: 20px;\n}\n\n/*\n * hello !\n * end\n */\n"
 
 /***/ }),
 /* 2 */
