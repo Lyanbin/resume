@@ -100,6 +100,9 @@ var Index = function () {
 
         console.log(_css2.default);
         this.styleDiv = document.querySelector('#style-text');
+        this.style = document.querySelector('#style-tag');
+        this.styleBuffer = '';
+        this.commentFlag = false; // 注释的开始结束的标志
         document.addEventListener('DOMContentLoaded', function () {
             return _this.writeTo(_this.styleDiv, _css2.default, 0, 20, false, 1);
         });
@@ -118,7 +121,6 @@ var Index = function () {
                 var thisSliceChars = message.slice(index - 2, index + 1);
                 if (endOfSentence.test(thisSliceChars)) {
                     console.log(thisSliceChars);
-                    console.log('asdasdasdsadasdasdasdasd');
                     thisInterval = interval * 50;
                 }
                 setTimeout(function () {
@@ -130,6 +132,31 @@ var Index = function () {
         key: 'writeChar',
         value: function writeChar(el, chars) {
             el.innerHTML += chars;
+        }
+    }, {
+        key: 'writeCSSChar',
+        value: function writeCSSChar(el, char, style) {
+            var text = el.innerHTML;
+            var htmlStr = this.handleChar(text, char);
+            el.innerHTML = htmlStr;
+            this.styleBuffer += char;
+            if (char === ';') {
+                style.textContent += this.styleBuffer;
+                this.styleBuffer = '';
+            }
+        }
+    }, {
+        key: 'handleChar',
+        value: function handleChar(text, char) {
+            if (char === '/' && this.commentFlag === false) {
+                this.commentFlag = true; // 如果标记为假且碰到「/」则说明注释开始
+                text += char;
+            } else if (char === '/' && this.commentFlag === true && text.slice(-1) === '*') {
+                this.commentFlag = false; // 如果标记为真且碰到「/」则说明注释结束
+                text += char;
+            } else if (char !== '/' && this.commentFlag) {
+                text += char; // 注释部分的文字
+            }
         }
     }]);
 
@@ -144,7 +171,7 @@ new Index();
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "/*\n * hello !\n * 我是李彦傧.\n */\n\n* {\n    padding: 0;\n    margin: 0;\n}\nbady {\n    background-color: #blue;\n}\n"
+module.exports = "/*\n * hello !\n * 我是李彦傧.\n */\n\n* {\n    padding: 0;\n    margin: 0;\n}\nbody {\n    background-color: #0e0e0e;\n}\n"
 
 /***/ }),
 /* 2 */
