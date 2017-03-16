@@ -6,16 +6,16 @@
 * {
     padding: 0;
     margin: 0;
+    transition: all 1s;
 }
 
 body {
-    background-color: green;
+    background-color: #244E6E;
 }
 
 .comment {
-    font-size: 18px;
-    color: red;
-    line-height: 20px;
+    color: #857F6B;
+    font-style: italic;
 }
 
 /*

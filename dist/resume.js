@@ -92,6 +92,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var endOfSentence = /[\.\!\?]\s$/;
 var commentRegex = /(\/\*(?:[^](?!\/\*))*\*)$/;
+var keyRegex = /([a-zA-Z- ^\n]*)$/;
+var valueRegex = /([^:]*)$/;
+var selectorRegex = /(.*)$/;
+var pxRegex = /\dp/;
+var pxRegex2 = /p$/;
 
 var Index = function () {
     function Index() {
@@ -167,7 +172,9 @@ var Index = function () {
                 text = text.replace(valueRegex, '<span class="value">$1</span>:');
             } else if (char === '{') {
                 text = text.replace(selectorRegex, '<span class="selector">$1</span>{');
-            } else if (char === 'x' && pxRegex.test(text.slice(-2))) {} else {
+            } else if (char === 'x' && pxRegex.test(text.slice(-2))) {
+                text = text.replace(pxRegex2, '<span class="value px">px</span>');
+            } else {
                 text += char;
             }
             return text;
@@ -185,7 +192,7 @@ new Index();
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "/*\n * hello !\n * 我是李彦傧.\n */\n\n* {\n    padding: 0;\n    margin: 0;\n}\n\nbody {\n    background-color: green;\n}\n\n.comment {\n    font-size: 18px;\n    color: red;\n    line-height: 20px;\n}\n\n/*\n * hello !\n * end\n */\n"
+module.exports = "/*\n * hello !\n * 我是李彦傧.\n */\n\n* {\n    padding: 0;\n    margin: 0;\n    transition: all 1s;\n}\n\nbody {\n    background-color: #244E6E;\n}\n\n.comment {\n    color: #857F6B;\n    font-style: italic;\n}\n\n/*\n * hello !\n * end\n */\n"
 
 /***/ }),
 /* 2 */
