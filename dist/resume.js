@@ -90,29 +90,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var endOfSentence = /[\.\!\?]$/;
+
 var Index = function () {
     function Index() {
+        var _this = this;
+
         _classCallCheck(this, Index);
 
         console.log(_css2.default);
-        var self = this;
+        this.styleDiv = document.querySelector('#style-text');
         document.addEventListener('DOMContentLoaded', function () {
-            self.styleDiv = document.querySelector('#style-text');
-            console.log(1);
-            self.writeTo(self.styleDiv, _css2.default, 0, 0, 20, false, 1);
+            return _this.writeTo(_this.styleDiv, _css2.default, 0, 20, false, 1);
         });
     }
 
     _createClass(Index, [{
         key: 'writeTo',
         value: function writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval) {
+            var _this2 = this;
+
             var chars = message.slice(index, index + charsPerInterval);
-            index += index + charsPerInterval;
+            index = index + charsPerInterval;
             this.writeChar(el, chars);
             if (index < message.length) {
-                console.log(2);
-                this.sleep(1000);
-                this.writeTo(this.styleDiv, _css2.default, 0, 0, 20, false, 1);
+                var thisInterval = interval;
+                var thisSliceChars = message.slice(index - 2, index + 1);
+                if (endOfSentence.test(thisSliceChars)) {
+                    console.log(thisSliceChars);
+                    console.log('asdasdasdsadasdasdasdasd');
+                    thisInterval = interval * 50;
+                }
+                setTimeout(function () {
+                    return _this2.writeTo(_this2.styleDiv, _css2.default, index, interval, mirrorToStyle, charsPerInterval);
+                }, thisInterval);
             }
         }
     }, {
@@ -133,7 +144,7 @@ new Index();
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "* {\n    padding: 0;\n    margin: 0;\n}\nbady {\n    background-color: #blue;\n}\n"
+module.exports = "/*\n * hello !\n * 我是李彦傧.\n */\n\n* {\n    padding: 0;\n    margin: 0;\n}\nbady {\n    background-color: #blue;\n}\n"
 
 /***/ }),
 /* 2 */

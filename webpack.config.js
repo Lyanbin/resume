@@ -31,7 +31,7 @@ module.exports = function () {
             filename: 'page/index.html',
             title: 'This is resume test page!',
             template: 'template/index.ejs',
-            inject: 'head'
+            inject: 'body'
         })],
 
     };
