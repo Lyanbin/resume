@@ -1,0 +1,88 @@
+{
+
+    "maxerr"        : 50,       // {int} 最大错误提示数量默认50
+
+    // Enforcing
+    "bitwise"       : true,     // true: 禁止使用位运算符
+    "camelcase"     : true,     // true: 必须使用驼峰命名
+    "curly"         : true,     // true: 必须使用{}在循环体内
+    "eqeqeq"        : true,     // true: 必须使用===
+    "forin"         : true,     // true: for-in语句要求过滤原型链上的对象 with obj.hasOwnProperty()
+    "immed"         : false,    // true: 自执行的方法使用括号括起（弃用）e.g. `(function () { } ());`
+    "indent"        : 4,        // {int} 缩进空格数（弃用）
+    "latedef"       : true,     // true: 变量必须先声明再使用
+    "newcap"        : false,    // true: 构造函数必须大写（弃用） e.g. `new F()`
+    "noarg"         : true,     // true: 不允许使用 arguments.callee 和 arguments.caller
+    "noempty"       : false,    // true: 不允许空的代码快（弃用）
+    "nonew"         : false,    // true: 不允许单独使用构造函数而不赋值
+    "plusplus"      : false,    // true: 不允许使用 `++`或者`--`
+    "quotmark"      : false,    // 引号使用:
+                                //   false    : 不检查
+                                //   true     : 不允许单双引号混用
+                                //   "single" : 只能单引号
+                                //   "double" : 只能双引号
+    "undef"         : true,     // true: 提示未定义的变量 (prevents global leaks)
+    "unused"        : true,     // true: 提示未使用的变量
+    "strict"        : false,    // true: 是要求否以 strict 模式检查
+    "trailing"      : true,     // true: 不允许结尾空格
+    "maxparams"     : false,    // {int} 设置函数正式参数的最大数量
+    "maxdepth"      : false,    // {int} 设置最大代码块嵌套深度
+    "maxstatements" : false,    // {int} 设置函数内声明语句的最大数量
+    "maxcomplexity" : false,    // {int} Max cyclomatic complexity per function
+    "maxlen"        : 80,       // {int} 设置每行最大长度
+    "esversion"     : 6,        // 使用es6语法
+    // Relaxing 设置true能忍受一些错误
+    "asi"           : false,     // true: 忍受没有分号 (no semicolons)
+    "boss"          : false,     // true: 忍受在比较处使用赋值
+    "debug"         : false,     // true: 忍受代码中的debugger e.g. browser breakpoints.
+    "eqnull"        : false,     // true: 忍受关于 == null的警告
+    "es5"           : false,     // true: 忍受要求所有函数运行在ES5的警告（弃用） (ex: getters and setters)
+    "esnext"        : false,     // true: 忍受要求所有函数运行在ES6的警告（弃用） (ES6) syntax (ex: `const`)
+    "moz"           : false,     // true: 忍受使用Mozilla特有语法 (extends and overrides esnext features)
+                                 // (ex: `for each`, multiple try/catch, function expression…)
+    "evil"          : false,     // true: 忍受使用 `eval` 和 `new Function()`
+    "expr"          : false,     // true: 忍受在应该使用复制或函数调用的地方使用了表达式 `ExpressionStatement` as Programs
+    "funcscope"     : false,     // true: 忍受变量只能在函数域上定义，在代码块上定义的变量给出警告
+    "globalstrict"  : true,      // true: Allow global "use strict" (also enables 'strict')
+    "iterator"      : false,     // true: Tolerate using the `__iterator__` property
+    "lastsemic"     : false,     // true: Tolerate omitting a semicolon for the last statement of a 1-line block
+    "laxbreak"      : false,     // true: 不显示不安全的折行的警告（弃用）
+    "laxcomma"      : false,     // true: 不显示逗号放前面的警告（弃用）
+    "loopfunc"      : false,     // true: 不显示 在循环语句中定义函数 的警告
+    "multistr"      : false,     // true: 不显示 多行字符串 的警告
+    "proto"         : false,     // true: 不显示使用 `__proto__` 的警告
+    "scripturl"     : false,     // true: Tolerate script-targeted URLs
+    "smarttabs"     : false,     // true: Tolerate mixed tabs/spaces when used for alignment
+    "shadow"        : false,     // true: Allows re-define variables later in code e.g. `var x=1; x=2;`
+    "sub"           : false,     // true: 该选项控制形如 person['name'] vs. person.name的警告信息的显示 （弃用）
+    "supernew"      : false,     // true: Tolerate `new function () { ... };` and `new Object;`
+    "validthis"     : false,     // true: Tolerate using this in a non-constructor function
+
+    // Environments 暴露一些全局变量
+    "browser"       : true,     // Web Browser (window, document, etc)
+    "couch"         : false,    // CouchDB
+    "devel"         : true,     // Development/debugging (alert, confirm, etc)
+    "dojo"          : false,    // Dojo Toolkit
+    "jquery"        : false,    // jQuery
+    "mootools"      : false,    // MooTools
+    "node"          : false,    // Node.js
+    "nonstandard"   : false,    // Widely adopted globals (escape, unescape, etc)
+    "prototypejs"   : false,    // Prototype and Scriptaculous
+    "rhino"         : false,    // Rhino
+    "worker"        : false,    // Web Workers
+    "wsh"           : false,    // Windows Scripting Host
+    "yui"           : false,    // Yahoo User Interface
+    //"meteor"      : false,    // Meteor.js
+
+    // Legacy
+    "nomen"         : false,    // true: Prohibit dangling `_` in variables
+    "onevar"        : false,    // true: Allow only one `var` statement per function
+    "passfail"      : false,    // true: Stop on first error
+    "white"         : false,    // true: Check against strict whitespace and indentation rules
+    "globals"       : {
+        "require"   : false,
+        "module"    : false,
+        "_"         : false,
+        "$"         : false
+    }
+}
