@@ -1,47 +1,27 @@
 /**
  * hello !
- * 我是李彦傧.
+ * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成过程。
  */
 
 /**
- * 这里，是我的简历。
- * 请您耐心等待简历的生成过程。
+ * 首先，对浏览器的样式做一个简单的预处理，顺便加个背景。
  */
-
-/**
- * 首先，对浏览器的样式做一个简单的预处理。
- */
-
 * {
     padding: 0;
     margin: 0;
-    -webkit-transition: all 4s;
+    -webkit-transition: all 1s;
 }
-
-/**
- * 这样有没有好点?来个背景色吧。
- */
-
 html {
     background-color: #244E6E;
 }
-
 /**
  * 貌似黑色的字是不是不太舒服?
  * 我来给加点别的样式。
  */
-pre:not(:empty) {
-    max-height: 45%;
-    width: 44%;
-}
-
-/**
- * 貌似黑色的字是不是不太舒服?
- * 我来给加点别的样式。
- */
-
 pre:not(:empty) {
     color: #fff;
+    width: 49%;
+    max-height: 45%;
     overflow: auto;
     background: rgb(48, 48, 48);
     border: 1px solid #ccc;
@@ -51,7 +31,6 @@ pre:not(:empty) {
     white-space: pre-wrap;
     outline: 0;
 }
-
 /**
  * 投放到右边
  */
@@ -59,7 +38,6 @@ pre:not(:empty) {
     -webkit-transform: translateX(95%);
     position: absolute;
 }
-
 /**
  * 语法高亮
  */
@@ -69,3 +47,7 @@ pre:not(:empty) {
 .key           { color: #64D5EA; }
 .value         { color: #BE84F2; }
 .value.px      { color: #F92772; }
+
+#style-text {
+    max-height: 90%;
+}
