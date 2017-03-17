@@ -1,24 +1,71 @@
-/*
+/**
  * hello !
  * 我是李彦傧.
+ */
+
+/**
+ * 这里，是我的简历。
+ * 请您耐心等待简历的生成过程。
+ */
+
+/**
+ * 首先，对浏览器的样式做一个简单的预处理。
  */
 
 * {
     padding: 0;
     margin: 0;
-    transition: all 1s;
+    -webkit-transition: all 4s;
 }
 
-body {
+/**
+ * 这样有没有好点?来个背景色吧。
+ */
+
+html {
     background-color: #244E6E;
 }
 
-.comment {
-    color: #857F6B;
-    font-style: italic;
+/**
+ * 貌似黑色的字是不是不太舒服?
+ * 我来给加点别的样式。
+ */
+pre:not(:empty) {
+    max-height: 45%;
+    width: 44%;
 }
 
-/*
- * hello !
- * end
+/**
+ * 貌似黑色的字是不是不太舒服?
+ * 我来给加点别的样式。
  */
+
+pre:not(:empty) {
+    color: #fff;
+    overflow: auto;
+    background: rgb(48, 48, 48);
+    border: 1px solid #ccc;
+    font-family: monospace;
+    padding: 10px 10px 20px;
+    margin: 10px;
+    white-space: pre-wrap;
+    outline: 0;
+}
+
+/**
+ * 投放到右边
+ */
+#style-text {
+    -webkit-transform: translateX(95%);
+    position: absolute;
+}
+
+/**
+ * 语法高亮
+ */
+.comment       { color: #857F6B; font-style: italic; }
+.selector      { color: #E69F0F; }
+.selector .key { color: #64D5EA; }
+.key           { color: #64D5EA; }
+.value         { color: #BE84F2; }
+.value.px      { color: #F92772; }
