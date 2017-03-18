@@ -16,8 +16,10 @@ html {
  * 貌似黑色的字是不是不太舒服?
  * 我来给加点别的样式。
  */
-pre:not(:empty) {
+pre, a {
     color: #fff;
+}
+pre:not(:empty) {
     width: 49%;
     max-height: 45%;
     background: rgb(48, 48, 48);
@@ -46,7 +48,7 @@ pre:not(:empty) {
 .value         { color: #BE84F2; }
 .value.px      { color: #F92772; }
 
-#style-text {
+pre:not(:empty) {
     max-height: 90%;
 }
 
@@ -58,4 +60,9 @@ body {
 #style-text {
   -webkit-transform: translateX(98.5%) rotateY(-10deg);
   -webkit-transform-origin: right;
+}
+
+pre:not(#style-text) {
+  -webkit-transform: rotateY(10deg);
+  -webkit-transform-origin: left;
 }

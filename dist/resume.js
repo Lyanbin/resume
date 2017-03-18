@@ -86,6 +86,10 @@ var _css = __webpack_require__(1);
 
 var _css2 = _interopRequireDefault(_css);
 
+var _work = __webpack_require__(3);
+
+var _work2 = _interopRequireDefault(_work);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -106,32 +110,56 @@ var Index = function () {
 
         this.styleDiv = document.querySelector('#style-text');
         this.style = document.querySelector('#style-tag');
+        this.workDiv = document.querySelector('#work-text');
         this.styleBuffer = '';
         this.commentFlag = false; // 注释的开始结束的标志
         document.addEventListener('DOMContentLoaded', function () {
-            return _this.writeTo(_this.styleDiv, _css2.default, 0, 20, false, 1);
+            // this.writeTo(this.styleDiv, bodyStyle, 0, 2, true, 1);
+            new Promise(function (resolve, reject) {
+                _this.terminal(resolve);
+            }).then(function () {
+                _this.workexp();
+            });
+            // this.terminal();
+            // this.workexp();
         });
     }
 
     _createClass(Index, [{
+        key: 'terminal',
+        value: function terminal(resolve) {
+            this.writeTo(this.styleDiv, _css2.default, 0, 2, true, 1, resolve);
+        }
+    }, {
+        key: 'workexp',
+        value: function workexp() {
+            this.writeTo(this.workDiv, _work2.default, 0, 2, false, 1);
+        }
+    }, {
         key: 'writeTo',
-        value: function writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval) {
+        value: function writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval, resolve) {
             var _this2 = this;
 
             var chars = message.slice(index, index + charsPerInterval);
             index = index + charsPerInterval;
             el.scrollTop = el.scrollHeight;
-            this.writeCSSChar(el, chars, this.style);
+            if (mirrorToStyle) {
+                this.writeCSSChar(el, chars, this.style);
+            } else {
+                this.writeChar(el, chars);
+            }
             if (index < message.length) {
                 var thisInterval = interval;
                 var thisSliceChars = message.slice(index - 2, index);
                 if (endOfSentence.test(thisSliceChars)) {
-                    console.log(thisSliceChars);
+                    // console.log(thisSliceChars);
                     thisInterval = interval * 10;
                 }
                 setTimeout(function () {
-                    return _this2.writeTo(_this2.styleDiv, _css2.default, index, interval, mirrorToStyle, charsPerInterval);
+                    return _this2.writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval, resolve);
                 }, thisInterval);
+            } else {
+                resolve && resolve();
             }
         }
     }, {
@@ -188,7 +216,7 @@ new Index();
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成过程。\n */\n\n/**\n * 首先，对浏览器的样式做一个简单的预处理，顺便加个背景。\n */\n* {\n    -webkit-transition: all 1s;\n}\nhtml {\n    background-color: #244E6E;\n}\n/**\n * 貌似黑色的字是不是不太舒服?\n * 我来给加点别的样式。\n */\npre:not(:empty) {\n    color: #fff;\n    width: 49%;\n    max-height: 45%;\n    background: rgb(48, 48, 48);\n    border: 1px solid #ccc;\n    overflow: auto;\n    font-family: monospace;\n    padding: 10px 10px 20px;\n    margin: 10px;\n    white-space: pre-wrap;\n    outline: 0;\n}\n/**\n * 投放到右边\n */\n#style-text {\n    -webkit-transform: translateX(95%);\n    position: absolute;\n}\n/**\n * 语法高亮\n */\n.comment       { color: #857F6B; font-style: italic; }\n.selector      { color: #E69F0F; }\n.selector .key { color: #64D5EA; }\n.key           { color: #64D5EA; }\n.value         { color: #BE84F2; }\n.value.px      { color: #F92772; }\n\n#style-text {\n    max-height: 90%;\n}\n\n\nbody {\n  -webkit-perspective: 1000px;\n}\n\n#style-text {\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\n  -webkit-transform-origin: right;\n}\n"
+module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成过程。\n */\n\n/**\n * 首先，对浏览器的样式做一个简单的预处理，顺便加个背景。\n */\n* {\n    -webkit-transition: all 1s;\n}\nhtml {\n    background-color: #244E6E;\n}\n/**\n * 貌似黑色的字是不是不太舒服?\n * 我来给加点别的样式。\n */\npre, a {\n    color: #fff;\n}\npre:not(:empty) {\n    width: 49%;\n    max-height: 45%;\n    background: rgb(48, 48, 48);\n    border: 1px solid #ccc;\n    overflow: auto;\n    font-family: monospace;\n    padding: 10px 10px 20px;\n    margin: 10px;\n    white-space: pre-wrap;\n    outline: 0;\n}\n/**\n * 投放到右边\n */\n#style-text {\n    -webkit-transform: translateX(95%);\n    position: absolute;\n}\n/**\n * 语法高亮\n */\n.comment       { color: #857F6B; font-style: italic; }\n.selector      { color: #E69F0F; }\n.selector .key { color: #64D5EA; }\n.key           { color: #64D5EA; }\n.value         { color: #BE84F2; }\n.value.px      { color: #F92772; }\n\npre:not(:empty) {\n    max-height: 90%;\n}\n\n\nbody {\n  -webkit-perspective: 1000px;\n}\n\n#style-text {\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\n  -webkit-transform-origin: right;\n}\n\npre:not(#style-text) {\n  -webkit-transform: rotateY(10deg);\n  -webkit-transform-origin: left;\n}\n"
 
 /***/ }),
 /* 2 */
@@ -196,6 +224,12 @@ module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历
 
 module.exports = __webpack_require__(0);
 
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = "李彦傧\n=========\n\n百度\nFEX\n前端工程师\n\n联系方式\n-------\n\n* Champagne.lyb@gmail.com\n* 北京市海淀区上地十街10号院\n\n\n工作能力\n------------\n\n* 熟练掌握JavaScript、HTML\\CSS，\n* 熟悉AngularJS、Vue前端框架，\n* 熟悉Webpack、Fis、Rollup等前端工程工具，\n* 熟悉PHP、NodeJS等服务端语言。\n\n项目经验\n--------\n\n* 百度业务监控平台\n* 前端性能探针\n\n学术成果\n-----------\n\n\n\n获得荣誉\n-----------\n\n\n\n学历信息\n-----------\n\n* 2013-2016 北京理工大学 信息安全与对抗 硕士\n* 2008-2012 国立华侨大学 通信工程 学士\n"
 
 /***/ })
 /******/ ]);
