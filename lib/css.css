@@ -7,8 +7,6 @@
  * 首先，对浏览器的样式做一个简单的预处理，顺便加个背景。
  */
 * {
-    padding: 0;
-    margin: 0;
     -webkit-transition: all 1s;
 }
 html {
@@ -22,9 +20,9 @@ pre:not(:empty) {
     color: #fff;
     width: 49%;
     max-height: 45%;
-    overflow: auto;
     background: rgb(48, 48, 48);
     border: 1px solid #ccc;
+    overflow: auto;
     font-family: monospace;
     padding: 10px 10px 20px;
     margin: 10px;
@@ -50,4 +48,14 @@ pre:not(:empty) {
 
 #style-text {
     max-height: 90%;
+}
+
+
+body {
+  -webkit-perspective: 1000px;
+}
+
+#style-text {
+  -webkit-transform: translateX(98.5%) rotateY(-10deg);
+  -webkit-transform-origin: right;
 }
