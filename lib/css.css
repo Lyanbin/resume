@@ -1,10 +1,11 @@
 /**
  * hello !
- * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成过程。
+ * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成。
  */
 
 /**
- * 首先，对浏览器的样式做一个简单的预处理，顺便加个背景。
+ * 首先，我们先制作一个控制台，来控制简历的生成。
+ * 对浏览器的样式做一个简单的预处理，顺便加个背景。
  */
 * {
     -webkit-transition: all 1s;
@@ -52,7 +53,9 @@ pre:not(:empty) {
     max-height: 90%;
 }
 
-
+/**
+ * 来点3D效果。
+ */
 body {
   -webkit-perspective: 1000px;
 }
@@ -62,6 +65,9 @@ body {
   -webkit-transform-origin: right;
 }
 
+/**
+ * 控制台生成完毕，简历开始产出。
+ */
 pre:not(#style-text) {
   -webkit-transform: rotateY(10deg);
   -webkit-transform-origin: left;

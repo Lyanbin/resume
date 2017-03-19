@@ -29,15 +29,20 @@ FEX
 学术成果
 -----------
 
+* Asymmetric multiple-image encryption based on the cascaded fractional Fourier transform, SCI(IF: 2.319)
+* Application of linear canonical transform correlation for detection of linear frequency modulated signals, SCI(IF: 0.873)
+* Image encryption based on the iterative fractional Fourier transform and a novel pixel scrambling technique, EI
+* 一种基于压缩感知的多图像加密和解密方法, 专利号:201510907549
 
 
 获得荣誉
 -----------
-
+* 2016 北京市优秀毕业生、北京理工大学优秀毕业生
+* 2015 国家奖学金、优秀研究生
+* 2014 优秀研究生
 
 
 学历信息
 -----------
 
 * 2013-2016 北京理工大学 信息安全与对抗 硕士
-* 2008-2012 国立华侨大学 通信工程 学士

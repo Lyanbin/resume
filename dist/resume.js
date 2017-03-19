@@ -115,10 +115,10 @@ var Index = function () {
         this.commentFlag = false; // 注释的开始结束的标志
         document.addEventListener('DOMContentLoaded', function () {
             // this.writeTo(this.styleDiv, bodyStyle, 0, 2, true, 1);
-            new Promise(function (resolve, reject) {
+            new Promise(function (resolve) {
                 _this.terminal(resolve);
-            }).then(function () {
-                _this.workexp();
+            }).then(function (resolve) {
+                _this.workexp(resolve);
             });
             // this.terminal();
             // this.workexp();
@@ -132,8 +132,8 @@ var Index = function () {
         }
     }, {
         key: 'workexp',
-        value: function workexp() {
-            this.writeTo(this.workDiv, _work2.default, 0, 2, false, 1);
+        value: function workexp(resolve) {
+            this.writeTo(this.workDiv, _work2.default, 0, 2, false, 1, resolve);
         }
     }, {
         key: 'writeTo',
@@ -216,7 +216,7 @@ new Index();
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成过程。\n */\n\n/**\n * 首先，对浏览器的样式做一个简单的预处理，顺便加个背景。\n */\n* {\n    -webkit-transition: all 1s;\n}\nhtml {\n    background-color: #244E6E;\n}\n/**\n * 貌似黑色的字是不是不太舒服?\n * 我来给加点别的样式。\n */\npre, a {\n    color: #fff;\n}\npre:not(:empty) {\n    width: 49%;\n    max-height: 45%;\n    background: rgb(48, 48, 48);\n    border: 1px solid #ccc;\n    overflow: auto;\n    font-family: monospace;\n    padding: 10px 10px 20px;\n    margin: 10px;\n    white-space: pre-wrap;\n    outline: 0;\n}\n/**\n * 投放到右边\n */\n#style-text {\n    -webkit-transform: translateX(95%);\n    position: absolute;\n}\n/**\n * 语法高亮\n */\n.comment       { color: #857F6B; font-style: italic; }\n.selector      { color: #E69F0F; }\n.selector .key { color: #64D5EA; }\n.key           { color: #64D5EA; }\n.value         { color: #BE84F2; }\n.value.px      { color: #F92772; }\n\npre:not(:empty) {\n    max-height: 90%;\n}\n\n\nbody {\n  -webkit-perspective: 1000px;\n}\n\n#style-text {\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\n  -webkit-transform-origin: right;\n}\n\npre:not(#style-text) {\n  -webkit-transform: rotateY(10deg);\n  -webkit-transform-origin: left;\n}\n"
+module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成。\n */\n\n/**\n * 首先，我们先制作一个控制台，来控制简历的生成。\n * 对浏览器的样式做一个简单的预处理，顺便加个背景。\n */\n* {\n    -webkit-transition: all 1s;\n}\nhtml {\n    background-color: #244E6E;\n}\n/**\n * 貌似黑色的字是不是不太舒服?\n * 我来给加点别的样式。\n */\npre, a {\n    color: #fff;\n}\npre:not(:empty) {\n    width: 49%;\n    max-height: 45%;\n    background: rgb(48, 48, 48);\n    border: 1px solid #ccc;\n    overflow: auto;\n    font-family: monospace;\n    padding: 10px 10px 20px;\n    margin: 10px;\n    white-space: pre-wrap;\n    outline: 0;\n}\n/**\n * 投放到右边\n */\n#style-text {\n    -webkit-transform: translateX(95%);\n    position: absolute;\n}\n/**\n * 语法高亮\n */\n.comment       { color: #857F6B; font-style: italic; }\n.selector      { color: #E69F0F; }\n.selector .key { color: #64D5EA; }\n.key           { color: #64D5EA; }\n.value         { color: #BE84F2; }\n.value.px      { color: #F92772; }\n\npre:not(:empty) {\n    max-height: 90%;\n}\n\n/**\n * 来点3D效果。\n */\nbody {\n  -webkit-perspective: 1000px;\n}\n\n#style-text {\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\n  -webkit-transform-origin: right;\n}\n\n/**\n * 控制台生成完毕，简历开始产出。\n */\npre:not(#style-text) {\n  -webkit-transform: rotateY(10deg);\n  -webkit-transform-origin: left;\n}\n"
 
 /***/ }),
 /* 2 */
@@ -229,7 +229,7 @@ module.exports = __webpack_require__(0);
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = "李彦傧\n=========\n\n百度\nFEX\n前端工程师\n\n联系方式\n-------\n\n* Champagne.lyb@gmail.com\n* 北京市海淀区上地十街10号院\n\n\n工作能力\n------------\n\n* 熟练掌握JavaScript、HTML\\CSS，\n* 熟悉AngularJS、Vue前端框架，\n* 熟悉Webpack、Fis、Rollup等前端工程工具，\n* 熟悉PHP、NodeJS等服务端语言。\n\n项目经验\n--------\n\n* 百度业务监控平台\n* 前端性能探针\n\n学术成果\n-----------\n\n\n\n获得荣誉\n-----------\n\n\n\n学历信息\n-----------\n\n* 2013-2016 北京理工大学 信息安全与对抗 硕士\n* 2008-2012 国立华侨大学 通信工程 学士\n"
+module.exports = "李彦傧\n=========\n\n百度\nFEX\n前端工程师\n\n联系方式\n-------\n\n* Champagne.lyb@gmail.com\n* 北京市海淀区上地十街10号院\n\n\n工作能力\n------------\n\n* 熟练掌握JavaScript、HTML\\CSS，\n* 熟悉AngularJS、Vue前端框架，\n* 熟悉Webpack、Fis、Rollup等前端工程工具，\n* 熟悉PHP、NodeJS等服务端语言。\n\n项目经验\n--------\n\n* 百度业务监控平台\n* 前端性能探针\n\n学术成果\n-----------\n\n* Asymmetric multiple-image encryption based on the cascaded fractional Fourier transform, SCI(IF: 2.319)\n* Application of linear canonical transform correlation for detection of linear frequency modulated signals, SCI(IF: 0.873)\n* Image encryption based on the iterative fractional Fourier transform and a novel pixel scrambling technique, EI\n* 一种基于压缩感知的多图像加密和解密方法, 专利号:201510907549\n\n\n获得荣誉\n-----------\n* 2016 北京市优秀毕业生、北京理工大学优秀毕业生\n* 2015 国家奖学金、优秀研究生\n* 2014 优秀研究生\n\n\n学历信息\n-----------\n\n* 2013-2016 北京理工大学 信息安全与对抗 硕士\n"
 
 /***/ })
 /******/ ]);
