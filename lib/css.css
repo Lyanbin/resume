@@ -7,19 +7,25 @@
  * 首先，我们先制作一个控制台，来控制简历的生成。
  * 对浏览器的样式做一个简单的预处理，顺便加个背景。
  */
+
+
 * {
     -webkit-transition: all 1s;
 }
+
 html {
     background-color: #244E6E;
 }
+
 /**
  * 貌似黑色的字是不是不太舒服?
  * 我来给加点别的样式。
  */
+
 pre, a {
     color: #fff;
 }
+
 pre:not(:empty) {
     width: 49%;
     max-height: 45%;
@@ -32,16 +38,20 @@ pre:not(:empty) {
     white-space: pre-wrap;
     outline: 0;
 }
+
 /**
- * 投放到右边
+ * 投放到右边。
  */
+
 #style-text {
     -webkit-transform: translateX(95%);
     position: absolute;
 }
+
 /**
- * 语法高亮
+ * 语法高亮。
  */
+
 .comment       { color: #857F6B; font-style: italic; }
 .selector      { color: #E69F0F; }
 .selector .key { color: #64D5EA; }
@@ -68,6 +78,7 @@ body {
 /**
  * 控制台生成完毕，简历开始产出。
  */
+
 pre:not(#style-text) {
   -webkit-transform: rotateY(10deg);
   -webkit-transform-origin: left;

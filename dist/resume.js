@@ -86,6 +86,14 @@ var _css = __webpack_require__(5);
 
 var _css2 = _interopRequireDefault(_css);
 
+var _css3 = __webpack_require__(11);
+
+var _css4 = _interopRequireDefault(_css3);
+
+var _css5 = __webpack_require__(12);
+
+var _css6 = _interopRequireDefault(_css5);
+
 var _work = __webpack_require__(6);
 
 var _work2 = _interopRequireDefault(_work);
@@ -124,9 +132,17 @@ var Index = function () {
                 return new Promise(function (resolve) {
                     _this.workExp(resolve);
                 });
+            }).then().then(function () {
+                return new Promise(function (resolve) {
+                    _this.appendTerminal(_this.styleDiv, _css4.default, 0, 20, true, 1, resolve);
+                });
             }).then(function () {
                 return new Promise(function (resolve) {
-                    _this.workExpToHTML();
+                    _this.workExpToHTML(_this.workDiv, _work2.default, resolve);
+                });
+            }).then(function () {
+                return new Promise(function (resolve) {
+                    _this.appendTerminal(_this.styleDiv, _css6.default, 0, 20, true, 1, resolve);
                 });
             });
             // this.terminal();
@@ -137,17 +153,25 @@ var Index = function () {
     _createClass(Index, [{
         key: 'terminal',
         value: function terminal(resolve) {
-            this.writeTo(this.styleDiv, _css2.default, 0, 2, true, 1, resolve);
+            this.writeTo(this.styleDiv, _css2.default, 0, 20, true, 1, resolve);
         }
     }, {
         key: 'workExp',
         value: function workExp(resolve) {
-            this.writeTo(this.workDiv, _work2.default, 0, 2, false, 1, resolve);
+            this.writeTo(this.workDiv, _work2.default, 0, 20, false, 1, resolve);
         }
     }, {
         key: 'workExpToHTML',
-        value: function workExpToHTML() {
-            console.log(_markdown2.default.markdown.toHTML(_work2.default));
+        value: function workExpToHTML(el, text, resolve) {
+            console.log(_markdown2.default.markdown.toHTML(text));
+            el.innerHTML = '<div class="md">' + _markdown2.default.markdown.toHTML(text) + '</div>';
+            el.scrollTop = 0;
+            resolve();
+        }
+    }, {
+        key: 'appendTerminal',
+        value: function appendTerminal(el, message, index, interval, mirrorToStyle, charsPerInterval, resolve) {
+            this.writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval, resolve);
         }
     }, {
         key: 'writeTo',
@@ -167,7 +191,7 @@ var Index = function () {
                 var thisSliceChars = message.slice(index - 2, index);
                 if (endOfSentence.test(thisSliceChars)) {
                     // console.log(thisSliceChars);
-                    thisInterval = interval * 10;
+                    thisInterval = interval * 30;
                 }
                 setTimeout(function () {
                     return _this2.writeTo(el, message, index, interval, mirrorToStyle, charsPerInterval, resolve);
@@ -2164,7 +2188,7 @@ process.umask = function() { return 0; };
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成。\n */\n\n/**\n * 首先，我们先制作一个控制台，来控制简历的生成。\n * 对浏览器的样式做一个简单的预处理，顺便加个背景。\n */\n* {\n    -webkit-transition: all 1s;\n}\nhtml {\n    background-color: #244E6E;\n}\n/**\n * 貌似黑色的字是不是不太舒服?\n * 我来给加点别的样式。\n */\npre, a {\n    color: #fff;\n}\npre:not(:empty) {\n    width: 49%;\n    max-height: 45%;\n    background: rgb(48, 48, 48);\n    border: 1px solid #ccc;\n    overflow: auto;\n    font-family: monospace;\n    padding: 10px 10px 20px;\n    margin: 10px;\n    white-space: pre-wrap;\n    outline: 0;\n}\n/**\n * 投放到右边\n */\n#style-text {\n    -webkit-transform: translateX(95%);\n    position: absolute;\n}\n/**\n * 语法高亮\n */\n.comment       { color: #857F6B; font-style: italic; }\n.selector      { color: #E69F0F; }\n.selector .key { color: #64D5EA; }\n.key           { color: #64D5EA; }\n.value         { color: #BE84F2; }\n.value.px      { color: #F92772; }\n\npre:not(:empty) {\n    max-height: 90%;\n}\n\n/**\n * 来点3D效果。\n */\nbody {\n  -webkit-perspective: 1000px;\n}\n\n#style-text {\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\n  -webkit-transform-origin: right;\n}\n\n/**\n * 控制台生成完毕，简历开始产出。\n */\npre:not(#style-text) {\n  -webkit-transform: rotateY(10deg);\n  -webkit-transform-origin: left;\n}\n"
+module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成。\n */\n\n/**\n * 首先，我们先制作一个控制台，来控制简历的生成。\n * 对浏览器的样式做一个简单的预处理，顺便加个背景。\n */\n\n\n* {\n    -webkit-transition: all 1s;\n}\n\nhtml {\n    background-color: #244E6E;\n}\n\n/**\n * 貌似黑色的字是不是不太舒服?\n * 我来给加点别的样式。\n */\n\npre, a {\n    color: #fff;\n}\n\npre:not(:empty) {\n    width: 49%;\n    max-height: 45%;\n    background: rgb(48, 48, 48);\n    border: 1px solid #ccc;\n    overflow: auto;\n    font-family: monospace;\n    padding: 10px 10px 20px;\n    margin: 10px;\n    white-space: pre-wrap;\n    outline: 0;\n}\n\n/**\n * 投放到右边。\n */\n\n#style-text {\n    -webkit-transform: translateX(95%);\n    position: absolute;\n}\n\n/**\n * 语法高亮。\n */\n\n.comment       { color: #857F6B; font-style: italic; }\n.selector      { color: #E69F0F; }\n.selector .key { color: #64D5EA; }\n.key           { color: #64D5EA; }\n.value         { color: #BE84F2; }\n.value.px      { color: #F92772; }\n\npre:not(:empty) {\n    max-height: 90%;\n}\n\n/**\n * 来点3D效果。\n */\nbody {\n  -webkit-perspective: 1000px;\n}\n\n#style-text {\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\n  -webkit-transform-origin: right;\n}\n\n/**\n * 控制台生成完毕，简历开始产出。\n */\n\npre:not(#style-text) {\n  -webkit-transform: rotateY(10deg);\n  -webkit-transform-origin: left;\n}\n"
 
 /***/ }),
 /* 6 */
@@ -2831,6 +2855,18 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = "/**\n * 左边的简历是markdown的语法，现在来重新渲染一下。\n */\n\n/**\n *\n *\n * 3...\n * 2...\n * 1...\n *\n *\n *\n */\n"
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = "\n/**\n * 转换后的简历，需要修改一些样式。\n */\n\n.md {\n  font-family: \"Helvetica Neue\", Helvetica, sans-serif;\n}\n\n.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {\n  display: inline-block;\n  color: #ddd;\n  border-bottom: 1px solid #ccc;\n  padding-bottom: 5px;\n}\n\n.md li {\n  margin: 5px 0;\n}\n\n.md h1, .md h2, .md h3, .md h4, .md h5, .md h6, .md ul, .md p {\n  margin: 0px;\n}\n\n\n/**\n * 以上就是关于李彦傧的基本情况，谢谢观看。\n */\n"
 
 /***/ })
 /******/ ]);

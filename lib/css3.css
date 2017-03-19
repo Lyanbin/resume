@@ -1,0 +1,28 @@
+
+/**
+ * 转换后的简历，需要修改一些样式。
+ */
+
+.md {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {
+  display: inline-block;
+  color: #ddd;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.md li {
+  margin: 5px 0;
+}
+
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6, .md ul, .md p {
+  margin: 0px;
+}
+
+
+/**
+ * 以上就是关于李彦傧的基本情况，谢谢观看。
+ */
