@@ -28,7 +28,7 @@ module.exports = function () {
             ]
         },
         plugins: [new htmlWebpackPlugin({
-            filename: 'page/index.html',
+            filename: '../index.html',
             title: 'This is resume test page!',
             template: 'template/index.ejs',
             inject: 'body'
