@@ -10,7 +10,7 @@
 
 
 * {
-    -webkit-transition: background 1s;
+    -webkit-transition: all 1s;
     -webkit-transform: translate3d(0,0,0);
     -webkit-backface-visibility: hidden;
     -webkit-transform-style: preserve-3d;
