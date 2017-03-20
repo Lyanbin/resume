@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <title><%= htmlWebpackPlugin.options.title %></title>
         <style>
+            * {
+                -webkit-backface-visibility: hidden;
+            }
             html, body {
               margin-top: 0;
               height: 100%;
