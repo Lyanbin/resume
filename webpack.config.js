@@ -8,7 +8,8 @@ module.exports = function () {
         },
         output: {
             path: path.join(__dirname, 'dist'),
-            filename: 'resume.js'
+            filename: 'resume.js',
+            publicPath: ''
         },
         module: {
             rules: [
