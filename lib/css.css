@@ -8,7 +8,6 @@
  * 对浏览器的样式做一个简单的预处理，顺便加个背景。
  */
 
-
 * {
     -webkit-transition: all 1s;
     -webkit-transform: translate3d(0,0,0);
@@ -69,6 +68,7 @@ pre:not(:empty) {
 /**
  * 来点3D效果。
  */
+
 body {
   -webkit-perspective: 1000px;
 }

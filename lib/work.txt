@@ -15,7 +15,7 @@
 -----------
 
 * 熟练掌握JavaScript、HTML\CSS，
-* 熟悉AngularJS、Vue前端框架，
+* 熟悉AngularJS、Vue、ReactJs前端框架，
 * 熟悉Webpack、Fis、Rollup等前端工程工具，
 * 熟悉PHP、NodeJS等服务端语言。
 
