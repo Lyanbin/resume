@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -132,7 +132,7 @@ var Index = function () {
                 return new Promise(function (resolve) {
                     _this.workExp(resolve);
                 });
-            }).then().then(function () {
+            }).then(function () {
                 return new Promise(function (resolve) {
                     _this.appendTerminal(_this.styleDiv, _css4.default, 0, 20, true, 1, resolve);
                 });
@@ -2165,6 +2165,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -2181,25 +2185,25 @@ process.umask = function() { return 0; };
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = "/**\n * hello !\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成。\n */\n\n/**\n * 首先，我们先制作一个控制台，来控制简历的生成。\n * 对浏览器的样式做一个简单的预处理，顺便加个背景。\n */\n\n\n* {\n    -webkit-transition: all 1s;\n    -webkit-transform: translate3d(0,0,0);\n    -webkit-backface-visibility: hidden;\n    -webkit-transform-style: preserve-3d;\n}\n\nhtml {\n    background-color: #244E6E;\n}\n\n/**\n * 貌似黑色的字是不是不太舒服?\n * 我来给加点别的样式。\n */\n\npre, a {\n    color: #fff;\n}\n\npre:not(:empty) {\n    width: 49%;\n    max-height: 45%;\n    background: rgb(48, 48, 48);\n    border: 1px solid #ccc;\n    overflow: auto;\n    font-family: monospace;\n    padding: 10px 10px 20px;\n    margin: 10px;\n    white-space: pre-wrap;\n    outline: 0;\n}\n\n/**\n * 投放到右边。\n */\n\n#style-text {\n    -webkit-transform: translateX(95%);\n    position: absolute;\n}\n\n/**\n * 语法高亮。\n */\n\n.comment       { color: #857F6B; font-style: italic; }\n.selector      { color: #E69F0F; }\n.selector .key { color: #64D5EA; }\n.key           { color: #64D5EA; }\n.value         { color: #BE84F2; }\n.value.px      { color: #F92772; }\n\npre:not(:empty) {\n    max-height: 90%;\n}\n\n/**\n * 来点3D效果。\n */\nbody {\n  -webkit-perspective: 1000px;\n}\n\n#style-text {\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\n  -webkit-transform-origin: right;\n}\n\n/**\n * 控制台生成完毕，简历开始产出。\n */\n\npre:not(#style-text) {\n  -webkit-transform: rotateY(10deg);\n  -webkit-transform-origin: left;\n}\n"
+module.exports = "/**\r\n * hello !\r\n * 我是李彦傧，这里，是我的简历，请您耐心等待简历的生成。\r\n */\r\n\r\n/**\r\n * 首先，我们先制作一个控制台，来控制简历的生成。\r\n * 对浏览器的样式做一个简单的预处理，顺便加个背景。\r\n */\r\n\r\n* {\r\n    -webkit-transition: all 1s;\r\n    -webkit-transform: translate3d(0,0,0);\r\n    -webkit-backface-visibility: hidden;\r\n    -webkit-transform-style: preserve-3d;\r\n}\r\n\r\nhtml {\r\n    background-color: #244E6E;\r\n}\r\n\r\n/**\r\n * 貌似黑色的字是不是不太舒服?\r\n * 我来给加点别的样式。\r\n */\r\n\r\npre, a {\r\n    color: #fff;\r\n}\r\n\r\npre:not(:empty) {\r\n    width: 49%;\r\n    max-height: 45%;\r\n    background: rgb(48, 48, 48);\r\n    border: 1px solid #ccc;\r\n    overflow: auto;\r\n    font-family: monospace;\r\n    padding: 10px 10px 20px;\r\n    margin: 10px;\r\n    white-space: pre-wrap;\r\n    outline: 0;\r\n}\r\n\r\n/**\r\n * 投放到右边。\r\n */\r\n\r\n#style-text {\r\n    -webkit-transform: translateX(95%);\r\n    position: absolute;\r\n}\r\n\r\n/**\r\n * 语法高亮。\r\n */\r\n\r\n.comment       { color: #857F6B; font-style: italic; }\r\n.selector      { color: #E69F0F; }\r\n.selector .key { color: #64D5EA; }\r\n.key           { color: #64D5EA; }\r\n.value         { color: #BE84F2; }\r\n.value.px      { color: #F92772; }\r\n\r\npre:not(:empty) {\r\n    max-height: 90%;\r\n}\r\n\r\n/**\r\n * 来点3D效果。\r\n */\r\n\r\nbody {\r\n  -webkit-perspective: 1000px;\r\n}\r\n\r\n#style-text {\r\n  -webkit-transform: translateX(98.5%) rotateY(-10deg);\r\n  -webkit-transform-origin: right;\r\n}\r\n\r\n/**\r\n * 控制台生成完毕，简历开始产出。\r\n */\r\n\r\npre:not(#style-text) {\r\n  -webkit-transform: rotateY(10deg);\r\n  -webkit-transform-origin: left;\r\n}\r\n"
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = "/**\n * 左边的简历是markdown的语法，现在来重新渲染一下。\n */\n\n/**\n *\n *\n * 3...\n * 2...\n * 1...\n *\n *\n *\n */\n"
+module.exports = "/**\r\n * 左边的简历是markdown的语法，现在来重新渲染一下。\r\n */\r\n\r\n/**\r\n *\r\n *\r\n * 3...\r\n * 2...\r\n * 1...\r\n *\r\n *\r\n *\r\n */\r\n"
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = "\n/**\n * 转换后的简历，需要修改一些样式。\n */\n\n.md {\n  font-family: \"Helvetica Neue\", Helvetica, sans-serif;\n}\n\n.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {\n  display: inline-block;\n  color: #ddd;\n  border-bottom: 1px solid #ccc;\n  padding-bottom: 5px;\n}\n\n.md li {\n  margin: 5px 0;\n}\n\n.md h1, .md h2, .md h3, .md h4, .md h5, .md h6, .md ul, .md p {\n  margin: 0px;\n}\n\n\n/**\n * 以上就是关于李彦傧的基本情况，谢谢观看。\n */\n"
+module.exports = "\r\n/**\r\n * 转换后的简历，需要修改一些样式。\r\n */\r\n\r\n.md {\r\n  font-family: \"Helvetica Neue\", Helvetica, sans-serif;\r\n}\r\n\r\n.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {\r\n  display: inline-block;\r\n  color: #ddd;\r\n  border-bottom: 1px solid #ccc;\r\n  padding-bottom: 5px;\r\n}\r\n\r\n.md li {\r\n  margin: 5px 0;\r\n}\r\n\r\n.md h1, .md h2, .md h3, .md h4, .md h5, .md h6, .md ul, .md p {\r\n  margin: 0px;\r\n}\r\n\r\n\r\n/**\r\n * 以上就是关于李彦傧的基本情况，谢谢观看。\r\n */\r\n"
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "李彦傧\n===========\n\n百度\n前端工程师\n\n联系方式\n-----------\n\n* Champagne.lyb@gmail.com\n* 北京市海淀区上地十街10号院\n\n\n工作能力\n-----------\n\n* 熟练掌握JavaScript、HTML\\CSS，\n* 熟悉AngularJS、Vue前端框架，\n* 熟悉Webpack、Fis、Rollup等前端工程工具，\n* 熟悉PHP、NodeJS等服务端语言。\n\n项目经验\n-----------\n\n* 百度业务监控平台\n* 前端性能探针\n\n学术成果\n-----------\n\n* Asymmetric multiple-image encryption based on the cascaded fractional Fourier transform, SCI(IF: 2.319)\n* Application of linear canonical transform correlation for detection of linear frequency modulated signals, SCI(IF: 0.873)\n* Image encryption based on the iterative fractional Fourier transform and a novel pixel scrambling technique, EI\n* 一种基于压缩感知的多图像加密和解密方法, 专利号:201510907549\n\n\n获得荣誉\n-----------\n* 2016 北京市优秀毕业生、北京理工大学优秀毕业生\n* 2015 国家奖学金、优秀研究生\n* 2014 优秀研究生\n\n\n学历信息\n-----------\n\n* 2013-2016 北京理工大学 信息安全与对抗 硕士\n"
+module.exports = "李彦傧\r\n===========\r\n\r\n百度FEX\r\n前端工程师\r\n\r\n联系方式\r\n-----------\r\n\r\n* Champagne.lyb@gmail.com\r\n* 北京市海淀区上地十街10号院\r\n\r\n\r\n工作能力\r\n-----------\r\n\r\n* 熟练掌握JavaScript、HTML\\CSS，\r\n* 熟悉AngularJS、ReactJs前端框架，\r\n* 熟悉Webpack、Fis、Rollup等前端工程工具，\r\n* 熟悉PHP、NodeJS等服务端语言。\r\n\r\n项目经验\r\n-----------\r\n\r\n* 百度贴吧\r\n* 百度业务监控平台\r\n* 前端性能探针\r\n\r\n学术成果\r\n-----------\r\n\r\n* Asymmetric multiple-image encryption based on the cascaded fractional Fourier transform, SCI(IF: 2.319)\r\n* Application of linear canonical transform correlation for detection of linear frequency modulated signals, SCI(IF: 0.873)\r\n* Image encryption based on the iterative fractional Fourier transform and a novel pixel scrambling technique, EI\r\n* 一种基于压缩感知的多图像加密和解密方法, 专利号:201510907549\r\n\r\n\r\n获得荣誉\r\n-----------\r\n* 2016 北京市优秀毕业生、北京理工大学优秀毕业生\r\n* 2015 国家奖学金、优秀研究生\r\n* 2014 优秀研究生\r\n\r\n\r\n学历信息\r\n-----------\r\n\r\n* 2013-2016 北京理工大学 信息安全与对抗 硕士\r\n"
 
 /***/ }),
 /* 8 */
